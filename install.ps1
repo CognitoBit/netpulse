@@ -1,8 +1,8 @@
 # netpulse installer for Windows.
-#   irm https://raw.githubusercontent.com/PLACEHOLDER/netpulse/main/install.ps1 | iex
+#   irm https://raw.githubusercontent.com/CognitoBit/netpulse/main/install.ps1 | iex
 $ErrorActionPreference = 'Stop'
 
-$Repo = 'PLACEHOLDER/netpulse'
+$Repo = 'CognitoBit/netpulse'
 
 # Windows PowerShell 5.1 defaults to TLS 1.0 for Invoke-WebRequest.
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12

@@ -8,8 +8,8 @@ import (
 
 	tea "github.com/charmbracelet/bubbletea"
 
-	"github.com/PLACEHOLDER/netpulse/internal/netutil"
-	"github.com/PLACEHOLDER/netpulse/internal/pingtest"
+	"github.com/CognitoBit/netpulse/internal/netutil"
+	"github.com/CognitoBit/netpulse/internal/pingtest"
 )
 
 type lossStartedMsg struct {

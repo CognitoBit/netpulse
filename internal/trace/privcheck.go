@@ -5,7 +5,7 @@ import (
 
 	"golang.org/x/net/icmp"
 
-	"github.com/PLACEHOLDER/netpulse/internal/netutil"
+	"github.com/CognitoBit/netpulse/internal/netutil"
 )
 
 // Strategy describes which ICMP socket flavor the MTR engine should use on

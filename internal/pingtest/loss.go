@@ -13,7 +13,7 @@ import (
 
 	probing "github.com/prometheus-community/pro-bing"
 
-	"github.com/PLACEHOLDER/netpulse/internal/netutil"
+	"github.com/CognitoBit/netpulse/internal/netutil"
 )
 
 // Config controls a loss test run.

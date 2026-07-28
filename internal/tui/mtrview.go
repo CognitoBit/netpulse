@@ -8,8 +8,8 @@ import (
 	"github.com/charmbracelet/bubbles/textinput"
 	tea "github.com/charmbracelet/bubbletea"
 
-	"github.com/PLACEHOLDER/netpulse/internal/netutil"
-	"github.com/PLACEHOLDER/netpulse/internal/trace"
+	"github.com/CognitoBit/netpulse/internal/netutil"
+	"github.com/CognitoBit/netpulse/internal/trace"
 )
 
 type mtrStartedMsg struct {

@@ -1,4 +1,4 @@
-module github.com/PLACEHOLDER/netpulse
+module github.com/CognitoBit/netpulse
 
 go 1.25.0
 

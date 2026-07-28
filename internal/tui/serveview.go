@@ -7,8 +7,8 @@ import (
 
 	tea "github.com/charmbracelet/bubbletea"
 
-	"github.com/PLACEHOLDER/netpulse/internal/lanserve"
-	"github.com/PLACEHOLDER/netpulse/internal/netutil"
+	"github.com/CognitoBit/netpulse/internal/lanserve"
+	"github.com/CognitoBit/netpulse/internal/netutil"
 )
 
 type serveStartedMsg struct {

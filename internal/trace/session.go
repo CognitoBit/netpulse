@@ -9,7 +9,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/PLACEHOLDER/netpulse/internal/netutil"
+	"github.com/CognitoBit/netpulse/internal/netutil"
 )
 
 // Config controls an MTR session.

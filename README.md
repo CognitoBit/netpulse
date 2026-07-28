@@ -14,16 +14,16 @@ Everything runs in the terminal: an interactive TUI when run bare, plain/JSON ou
 **Windows** (PowerShell):
 
 ```powershell
-irm https://raw.githubusercontent.com/PLACEHOLDER/netpulse/main/install.ps1 | iex
+irm https://raw.githubusercontent.com/CognitoBit/netpulse/main/install.ps1 | iex
 ```
 
 **macOS / Linux**:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/PLACEHOLDER/netpulse/main/install.sh | sh
+curl -fsSL https://raw.githubusercontent.com/CognitoBit/netpulse/main/install.sh | sh
 ```
 
-Or grab a binary from [releases](https://github.com/PLACEHOLDER/netpulse/releases).
+Or grab a binary from [releases](https://github.com/CognitoBit/netpulse/releases).
 
 ## Use
 

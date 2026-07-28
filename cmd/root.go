@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/PLACEHOLDER/netpulse/internal/tui"
+	"github.com/CognitoBit/netpulse/internal/tui"
 	"github.com/spf13/cobra"
 	"golang.org/x/term"
 )

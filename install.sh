@@ -1,9 +1,9 @@
 #!/bin/sh
 # netpulse installer for macOS and Linux.
-#   curl -fsSL https://raw.githubusercontent.com/PLACEHOLDER/netpulse/main/install.sh | sh
+#   curl -fsSL https://raw.githubusercontent.com/CognitoBit/netpulse/main/install.sh | sh
 set -eu
 
-REPO="PLACEHOLDER/netpulse"
+REPO="CognitoBit/netpulse"
 
 main() {
     os=$(uname -s)

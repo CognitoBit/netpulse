@@ -8,8 +8,8 @@ package tui
 import (
 	tea "github.com/charmbracelet/bubbletea"
 
-	"github.com/PLACEHOLDER/netpulse/internal/pingtest"
-	"github.com/PLACEHOLDER/netpulse/internal/trace"
+	"github.com/CognitoBit/netpulse/internal/pingtest"
+	"github.com/CognitoBit/netpulse/internal/trace"
 )
 
 type appState int

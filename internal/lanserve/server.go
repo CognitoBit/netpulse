@@ -11,7 +11,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/PLACEHOLDER/netpulse/internal/netutil"
+	"github.com/CognitoBit/netpulse/internal/netutil"
 )
 
 // DefaultPort is tried first; if taken (and the user didn't pick a port

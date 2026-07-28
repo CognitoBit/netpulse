@@ -10,9 +10,9 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/PLACEHOLDER/netpulse/internal/netutil"
-	"github.com/PLACEHOLDER/netpulse/internal/pingtest"
-	"github.com/PLACEHOLDER/netpulse/internal/tui"
+	"github.com/CognitoBit/netpulse/internal/netutil"
+	"github.com/CognitoBit/netpulse/internal/pingtest"
+	"github.com/CognitoBit/netpulse/internal/tui"
 )
 
 func init() {
