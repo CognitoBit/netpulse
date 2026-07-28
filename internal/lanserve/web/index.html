@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>netpulse — LAN speed test</title>
+<style>
+  :root {
+    --bg: #0f1218; --panel: #171c26; --text: #e6e9ef; --dim: #8a93a6;
+    --accent: #4cc38a; --down: #58a6ff; --up: #d29922; --err: #f85149;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body {
+    background: var(--bg); color: var(--text); min-height: 100vh;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    display: flex; flex-direction: column; align-items: center; padding: 24px 16px;
+  }
+  h1 { font-size: 20px; letter-spacing: 2px; margin: 8px 0 2px; }
+  h1 span { color: var(--accent); }
+  .sub { color: var(--dim); font-size: 12px; margin-bottom: 28px; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; width: 100%; max-width: 720px; }
+  @media (max-width: 560px) { .grid { grid-template-columns: 1fr; } }
+  .card { background: var(--panel); border-radius: 10px; padding: 18px 16px; text-align: center; }
+  .card .label { color: var(--dim); font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; }
+  .card .value { font-size: 34px; font-weight: 700; margin: 8px 0 2px; min-height: 42px; }
+  .card .unit { color: var(--dim); font-size: 12px; }
+  .card.down .value { color: var(--down); } .card.up .value { color: var(--up); } .card.ping .value { color: var(--accent); }
+  #go {
+    margin: 28px 0 10px; padding: 12px 48px; font: inherit; font-size: 16px; font-weight: 700;
+    color: #06130c; background: var(--accent); border: 0; border-radius: 999px; cursor: pointer;
+  }
+  #go:disabled { opacity: .45; cursor: wait; }
+  #bar { width: 100%; max-width: 720px; height: 4px; background: var(--panel); border-radius: 2px; overflow: hidden; }
+  #bar div { height: 100%; width: 0; background: var(--accent); transition: width .2s linear; }
+  #status { color: var(--dim); font-size: 12px; margin-top: 10px; min-height: 16px; }
+  #status.err { color: var(--err); }
+</style>
+</head>
+<body>
+  <h1>net<span>pulse</span></h1>
+  <div class="sub">LAN speed test &mdash; served from this network, no internet used</div>
+
+  <div class="grid">
+    <div class="card down"><div class="label">Download</div><div class="value" id="down">&ndash;</div><div class="unit">Mbps</div></div>
+    <div class="card up"><div class="label">Upload</div><div class="value" id="up">&ndash;</div><div class="unit">Mbps</div></div>
+    <div class="card ping"><div class="label">Ping / Jitter</div><div class="value" id="ping">&ndash;</div><div class="unit">ms</div></div>
+  </div>
+
+  <button id="go">START</button>
+  <div id="bar"><div></div></div>
+  <div id="status"></div>
+
+<script>
+"use strict";
+const $ = id => document.getElementById(id);
+const fmt = mbps => mbps >= 100 ? Math.round(mbps) : mbps.toFixed(1);
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+const PING_COUNT = 10;
+const DOWN_SECS = 8, UP_SECS = 8, STREAMS = 3;
+const DOWN_BYTES = 50 * 1024 * 1024, UP_BYTES = 16 * 1024 * 1024;
+
+function setStatus(msg, isErr) {
+  const el = $("status");
+  el.textContent = msg;
+  el.className = isErr ? "err" : "";
+}
+function setBar(frac) { $("bar").firstElementChild.style.width = (frac * 100) + "%"; }
+
+async function pingTest() {
+  const samples = [];
+  for (let i = 0; i <= PING_COUNT; i++) {
+    const t0 = performance.now();
+    await fetch("/ping", { cache: "no-store" });
+    const rtt = performance.now() - t0;
+    if (i > 0) samples.push(rtt); // first request pays connection setup
+    setBar(i / PING_COUNT * 0.15);
+  }
+  samples.sort((a, b) => a - b);
+  const median = samples[Math.floor(samples.length / 2)];
+  let jitter = 0;
+  for (let i = 1; i < samples.length; i++) jitter += Math.abs(samples[i] - samples[i - 1]);
+  jitter /= Math.max(1, samples.length - 1);
+  return { median, jitter };
+}
+
+// Shared byte counter sampled on an interval; skips the first second as warm-up.
+function makeMeter(el, secs, barFrom, barTo) {
+  let bytes = 0, samples = [];
+  const t0 = performance.now();
+  const timer = setInterval(() => {
+    const elapsed = (performance.now() - t0) / 1000;
+    const mbps = bytes * 8 / 1e6 / Math.max(elapsed, 0.001);
+    if (elapsed > 1) samples.push(mbps);
+    el.textContent = fmt(mbps);
+    setBar(barFrom + Math.min(1, elapsed / secs) * (barTo - barFrom));
+  }, 200);
+  return {
+    add: n => { bytes += n; },
+    stop: () => {
+      clearInterval(timer);
+      const final = samples.length ? samples[samples.length - 1] : 0;
+      el.textContent = fmt(final);
+      return final;
+    },
+  };
+}
+
+async function downloadTest() {
+  const meter = makeMeter($("down"), DOWN_SECS, 0.15, 0.55);
+  const stopAt = performance.now() + DOWN_SECS * 1000;
+  const worker = async () => {
+    while (performance.now() < stopAt) {
+      const resp = await fetch("/download?bytes=" + DOWN_BYTES, { cache: "no-store" });
+      const reader = resp.body.getReader();
+      for (;;) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        meter.add(value.length);
+        if (performance.now() > stopAt) { await reader.cancel(); break; }
+      }
+    }
+  };
+  await Promise.all(Array.from({ length: STREAMS }, worker));
+  return meter.stop();
+}
+
+// XHR gives reliable cross-browser upload progress (fetch upload streaming doesn't).
+function uploadOnce(blob, onProgress, signal) {
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    let last = 0;
+    xhr.open("POST", "/upload");
+    xhr.upload.onprogress = e => { onProgress(e.loaded - last); last = e.loaded; };
+    xhr.onload = () => resolve();
+    xhr.onerror = () => reject(new Error("upload failed"));
+    signal.addEventListener("abort", () => { try { xhr.abort(); } catch {} resolve(); });
+    xhr.send(blob);
+  });
+}
+
+async function uploadTest() {
+  // crypto.getRandomValues caps at 64KB per call; repeat one random chunk.
+  const chunk = crypto.getRandomValues(new Uint8Array(65536));
+  const parts = [];
+  for (let i = 0; i < UP_BYTES / 65536; i++) parts.push(chunk);
+  const body = new Blob(parts);
+
+  const meter = makeMeter($("up"), UP_SECS, 0.55, 1.0);
+  const ctl = new AbortController();
+  const stopAt = performance.now() + UP_SECS * 1000;
+  const worker = async () => {
+    while (performance.now() < stopAt && !ctl.signal.aborted) {
+      await uploadOnce(body, n => meter.add(n), ctl.signal);
+    }
+  };
+  const timer = setTimeout(() => ctl.abort(), UP_SECS * 1000 + 100);
+  await Promise.all(Array.from({ length: 2 }, worker));
+  clearTimeout(timer);
+  return meter.stop();
+}
+
+$("go").addEventListener("click", async () => {
+  const btn = $("go");
+  btn.disabled = true;
+  $("down").innerHTML = "&ndash;"; $("up").innerHTML = "&ndash;"; $("ping").innerHTML = "&ndash;";
+  try {
+    setStatus("measuring ping…");
+    const p = await pingTest();
+    $("ping").textContent = p.median.toFixed(1) + " / " + p.jitter.toFixed(1);
+    setStatus("testing download…");
+    await downloadTest();
+    setStatus("testing upload…");
+    await uploadTest();
+    setStatus("done");
+    setBar(1);
+  } catch (e) {
+    setStatus("test failed: " + e.message, true);
+  } finally {
+    btn.disabled = false;
+  }
+});
+</script>
+</body>
+</html>

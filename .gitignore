@@ -1,0 +1,4 @@
+netpulse
+netpulse.exe
+dist/
+*.log

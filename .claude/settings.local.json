@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(go version *)",
+      "PowerShell(git config --global user.name)",
+      "PowerShell(git config --global user.email)",
+      "PowerShell(gh auth status 2>$null)",
+      "PowerShell(gh api user --jq .login 2>$null)",
+      "PowerShell(go version 2>$null)",
+      "PowerShell(if \\(-not $?\\) { \"go not found\" })"
+    ]
+  }
+}
