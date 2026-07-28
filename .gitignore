@@ -2,3 +2,4 @@ netpulse
 netpulse.exe
 dist/
 *.log
+.claude/
