@@ -34,7 +34,7 @@ main() {
     say "downloading $asset ..."
     tmp=$(mktemp -d)
     trap 'rm -rf "$tmp"' EXIT
-    curl -fsSL "$url" -o "$tmp/$asset" || err "download failed: $url"
+    download "$url" "$tmp/$asset" || err "download failed: $url"
     tar -xzf "$tmp/$asset" -C "$tmp"
 
     mkdir -p "$install_dir"
@@ -60,6 +60,16 @@ main() {
 
     if command -v "$install_dir/netpulse" >/dev/null 2>&1; then
         "$install_dir/netpulse" --version
+    fi
+}
+
+download() {
+    if command -v curl >/dev/null 2>&1; then
+        curl -fsSL "$1" -o "$2"
+    elif command -v wget >/dev/null 2>&1; then
+        wget -qO "$2" "$1"
+    else
+        err "need curl or wget to download"
     fi
 }
 
