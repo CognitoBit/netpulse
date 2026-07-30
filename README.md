@@ -2,6 +2,8 @@
 
 A terminal network performance toolkit — one static binary, no dependencies.
 
+![netpulse demo](demo.gif)
+
 - **Speed test** — internet download/upload/latency via speedtest.net (Ookla) or Cloudflare
 - **LAN speed server** — host a browser speed test page; any phone/laptop on your network can test against your machine
 - **Packet loss** — ICMP burst testing with loss %, latency distribution and jitter (packetlosstest.com style)
