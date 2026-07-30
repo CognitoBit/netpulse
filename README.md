@@ -65,4 +65,8 @@ go build -o netpulse .
 
 Releases are built by GoReleaser via GitHub Actions on version tags (`v*`).
 
+## License
+
+[MIT](LICENSE)
+
 Future: Homebrew tap (`brews:`) and Scoop bucket (`scoops:`) can be added to `.goreleaser.yaml` once tap/bucket repos exist.
