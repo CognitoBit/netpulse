@@ -13,6 +13,12 @@ Everything runs in the terminal: an interactive TUI when run bare, plain/JSON ou
 
 ## Install
 
+**Homebrew** (macOS / Linux):
+
+```bash
+brew install cognitobit/tap/netpulse
+```
+
 **Windows** (PowerShell):
 
 ```powershell
@@ -71,4 +77,4 @@ Releases are built by GoReleaser via GitHub Actions on version tags (`v*`).
 
 [MIT](LICENSE)
 
-Future: Homebrew tap (`brews:`) and Scoop bucket (`scoops:`) can be added to `.goreleaser.yaml` once tap/bucket repos exist.
+Future: Scoop bucket (`scoops:`) can be added to `.goreleaser.yaml` once a bucket repo exists.

@@ -21,6 +21,27 @@ archives:
 checksum:
   name_template: checksums.txt
 
+# Pushes an updated formula to CognitoBit/homebrew-tap on each release.
+# Needs a HOMEBREW_TAP_GITHUB_TOKEN secret (fine-grained PAT with contents:write
+# on the tap repo) — the workflow's default GITHUB_TOKEN can't push there.
+brews:
+  - repository:
+      owner: CognitoBit
+      name: homebrew-tap
+      token: "{{ .Env.HOMEBREW_TAP_GITHUB_TOKEN }}"
+    directory: Formula
+    homepage: https://github.com/CognitoBit/netpulse
+    description: "Terminal network performance toolkit: speed test, LAN server, packet loss, MTR"
+    license: MIT
+    commit_msg_template: "netpulse {{ .Tag }}"
+    install: |
+      bin.install "netpulse"
+    caveats: |
+      On Linux, `netpulse mtr` needs raw sockets. Grant them once with:
+        sudo setcap cap_net_raw+ep "$(command -v netpulse)"
+    test: |
+      assert_match version.to_s, shell_output("#{bin}/netpulse --version")
+
 changelog:
   sort: asc
   filters:
