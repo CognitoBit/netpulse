@@ -59,7 +59,7 @@ type speedView struct {
 func newSpeedView(opts speedOptions) *speedView {
 	sp := spinner.New()
 	sp.Spinner = spinner.Dot
-	sp.Style = styleGood
+	sp.Style = stylePulse
 	return &speedView{opts: opts, pick: opts.PickBackend, spin: sp, width: 80}
 }
 
