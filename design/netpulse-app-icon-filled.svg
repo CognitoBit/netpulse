@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-label="netpulse">
+  <title>netpulse app icon</title>
+  <rect width="96" height="96" rx="22" fill="#C2472F"/>
+  <g transform="translate(22 22) scale(0.79853)">
+  <rect x="0.00" y="0.00" width="15.11" height="15.11" rx="2.83" fill="#F7F5F0" fill-opacity="0.28"/>
+  <rect x="16.67" y="0.00" width="15.11" height="15.11" rx="2.83" fill="#F7F5F0"/>
+  <rect x="33.34" y="0.00" width="15.11" height="15.11" rx="2.83" fill="#F7F5F0" fill-opacity="0.28"/>
+  <rect x="50.01" y="0.00" width="15.11" height="15.11" rx="2.83" fill="#F7F5F0" fill-opacity="0.28"/>
+  <rect x="0.00" y="16.67" width="15.11" height="15.11" rx="2.83" fill="#F7F5F0"/>
+  <rect x="16.67" y="16.67" width="15.11" height="15.11" rx="2.83" fill="#F7F5F0" fill-opacity="0.28"/>
+  <rect x="33.34" y="16.67" width="15.11" height="15.11" rx="2.83" fill="#F7F5F0"/>
+  <rect x="50.01" y="16.67" width="15.11" height="15.11" rx="2.83" fill="#F7F5F0" fill-opacity="0.28"/>
+  <rect x="0.00" y="33.34" width="15.11" height="15.11" rx="2.83" fill="#F7F5F0" fill-opacity="0.28"/>
+  <rect x="16.67" y="33.34" width="15.11" height="15.11" rx="2.83" fill="#F7F5F0" fill-opacity="0.28"/>
+  <rect x="50.01" y="33.34" width="15.11" height="15.11" rx="2.83" fill="#F7F5F0"/>
+  <rect x="0.00" y="50.01" width="15.11" height="15.11" rx="2.83" fill="#F7F5F0" fill-opacity="0.28"/>
+  <rect x="16.67" y="50.01" width="15.11" height="15.11" rx="2.83" fill="#F7F5F0" fill-opacity="0.28"/>
+  <rect x="33.34" y="50.01" width="15.11" height="15.11" rx="2.83" fill="#F7F5F0" fill-opacity="0.28"/>
+  <rect x="50.01" y="50.01" width="15.11" height="15.11" rx="2.83" fill="#F7F5F0" fill-opacity="0.28"/>
+  </g>
+</svg>

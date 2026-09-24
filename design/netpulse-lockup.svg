@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 222 48" width="222" height="48" role="img" aria-label="netpulse">
+  <title>netpulse</title>
+  <g transform="translate(4 4) scale(0.61425)">
+  <rect x="0.00" y="0.00" width="15.11" height="15.11" rx="2.83" fill="#C9C5BC"/>
+  <rect x="16.67" y="0.00" width="15.11" height="15.11" rx="2.83" fill="#C2472F"/>
+  <rect x="33.34" y="0.00" width="15.11" height="15.11" rx="2.83" fill="#C9C5BC"/>
+  <rect x="50.01" y="0.00" width="15.11" height="15.11" rx="2.83" fill="#C9C5BC"/>
+  <rect x="0.00" y="16.67" width="15.11" height="15.11" rx="2.83" fill="#C2472F"/>
+  <rect x="16.67" y="16.67" width="15.11" height="15.11" rx="2.83" fill="#C9C5BC"/>
+  <rect x="33.34" y="16.67" width="15.11" height="15.11" rx="2.83" fill="#C2472F"/>
+  <rect x="50.01" y="16.67" width="15.11" height="15.11" rx="2.83" fill="#C9C5BC"/>
+  <rect x="0.00" y="33.34" width="15.11" height="15.11" rx="2.83" fill="#C9C5BC"/>
+  <rect x="16.67" y="33.34" width="15.11" height="15.11" rx="2.83" fill="#C9C5BC"/>
+  <rect x="50.01" y="33.34" width="15.11" height="15.11" rx="2.83" fill="#C2472F"/>
+  <rect x="0.00" y="50.01" width="15.11" height="15.11" rx="2.83" fill="#C9C5BC"/>
+  <rect x="16.67" y="50.01" width="15.11" height="15.11" rx="2.83" fill="#C9C5BC"/>
+  <rect x="33.34" y="50.01" width="15.11" height="15.11" rx="2.83" fill="#C9C5BC"/>
+  <rect x="50.01" y="50.01" width="15.11" height="15.11" rx="2.83" fill="#C9C5BC"/>
+  </g>
+  <text x="58" y="36" font-family="'Schibsted Grotesk', system-ui, 'Segoe UI', sans-serif" font-weight="600" font-size="36" letter-spacing="-0.72" fill="#141414">netpulse</text>
+</svg>

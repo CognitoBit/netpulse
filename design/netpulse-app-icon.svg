@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-label="netpulse">
+  <title>netpulse app icon, light</title>
+  <rect x="0.5" y="0.5" width="95" height="95" rx="22" fill="#FFFFFF" stroke="#DAD6CD"/>
+  <g transform="translate(22 22) scale(0.79853)">
+  <rect x="0.00" y="0.00" width="15.11" height="15.11" rx="2.83" fill="#C9C5BC"/>
+  <rect x="16.67" y="0.00" width="15.11" height="15.11" rx="2.83" fill="#C2472F"/>
+  <rect x="33.34" y="0.00" width="15.11" height="15.11" rx="2.83" fill="#C9C5BC"/>
+  <rect x="50.01" y="0.00" width="15.11" height="15.11" rx="2.83" fill="#C9C5BC"/>
+  <rect x="0.00" y="16.67" width="15.11" height="15.11" rx="2.83" fill="#C2472F"/>
+  <rect x="16.67" y="16.67" width="15.11" height="15.11" rx="2.83" fill="#C9C5BC"/>
+  <rect x="33.34" y="16.67" width="15.11" height="15.11" rx="2.83" fill="#C2472F"/>
+  <rect x="50.01" y="16.67" width="15.11" height="15.11" rx="2.83" fill="#C9C5BC"/>
+  <rect x="0.00" y="33.34" width="15.11" height="15.11" rx="2.83" fill="#C9C5BC"/>
+  <rect x="16.67" y="33.34" width="15.11" height="15.11" rx="2.83" fill="#C9C5BC"/>
+  <rect x="50.01" y="33.34" width="15.11" height="15.11" rx="2.83" fill="#C2472F"/>
+  <rect x="0.00" y="50.01" width="15.11" height="15.11" rx="2.83" fill="#C9C5BC"/>
+  <rect x="16.67" y="50.01" width="15.11" height="15.11" rx="2.83" fill="#C9C5BC"/>
+  <rect x="33.34" y="50.01" width="15.11" height="15.11" rx="2.83" fill="#C9C5BC"/>
+  <rect x="50.01" y="50.01" width="15.11" height="15.11" rx="2.83" fill="#C9C5BC"/>
+  </g>
+</svg>
